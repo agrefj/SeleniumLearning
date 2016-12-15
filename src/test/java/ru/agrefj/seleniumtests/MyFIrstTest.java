@@ -17,7 +17,7 @@ public class MyFIrstTest {
     private WebDriverWait wait;
 
     @Before
-            public void start() {
+    public void start() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver,10);
     }
