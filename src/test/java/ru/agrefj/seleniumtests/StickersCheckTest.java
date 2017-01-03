@@ -38,10 +38,19 @@ public class StickersCheckTest {
             webDriver.get("http://localhost/litecart/");
             List<WebElement> products = new ArrayList<WebElement>();
             products = webDriver.findElements(By.cssSelector("li.product"));
-            for (WebElement product : products){
-                Assert.assertEquals(1 ,product.findElements(By.cssSelector("div.sticker")).size());
+
+
+
+            for(int i=0; i<products.size(); i++){
+                WebElement product = products.get(i);
+                List<WebElement> stickers = product.findElements(By.cssSelector(".sticker"));
+                Assert.assertEquals(2,stickers.size());
             }
+
         }
+
+
+
 
 
 
