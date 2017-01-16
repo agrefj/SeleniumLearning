@@ -22,7 +22,6 @@ public class AuthorizationTest {
     public void start() {
         webDriver = new ChromeDriver();
         wait = new WebDriverWait(webDriver,10);
-
     }
 
     @Test
