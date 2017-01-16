@@ -42,7 +42,7 @@ public class CountriesSortTest {
         List<WebElement> countriesNames = webDriver.findElements(By.cssSelector("[name=countries_form] tr.row td:nth-child(5)"));
         List <String> countryNamesText = countriesNames.stream().map(country -> country.getAttribute("outerText")).collect(Collectors.toList());
 
-        Assert.assertTrue("A list is not sorted correctly", isSortedListString(countryNamesText));
+        Assert.assertTrue("A list is not sorted correctly", BaseTest.isSortedListString(countryNamesText));
 
         for (int i = 0; i < countriesNames.size(); i++) {
             List<WebElement> countriesRows = webDriver.findElements(By.cssSelector("[name=countries_form] tr.row"));
@@ -56,17 +56,10 @@ public class CountriesSortTest {
                 zoneNamesForCountry.remove(zoneNamesForCountry.size()-1);
                 List <String> zoneNamesForCountryText = zoneNamesForCountry.stream().map(zone -> zone.getAttribute("innerText")).collect(Collectors.toList());
 
-                Assert.assertTrue("A list isn't sorted correctly", isSortedListString(zoneNamesForCountryText));
+                Assert.assertTrue("A list isn't sorted correctly", BaseTest.isSortedListString(zoneNamesForCountryText));
                 webDriver.findElement(By.cssSelector("button[name = 'cancel']")).click();
             }
         }
-    }
-
-
-    public Boolean isSortedListString(List<String> list){
-        List<String> newList = new ArrayList(list);
-        Collections.sort(list);
-        return list.equals(newList);
     }
 
 
