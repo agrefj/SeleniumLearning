@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -75,7 +76,11 @@ public class AddNewProductTest {
         selectCheckBox("Rubber Ducks","input[name = 'categories[]']","data-name");
         selectCheckBox("Female", "#tab-general tr:nth-child(7) div.input-wrapper tr td", "outerText");
         insertText("10","input[name = 'quantity']");
-        insertText("/Users/test/Desktop/testimage.png","input[name = 'new_images[]']");
+
+        File imageFile = new File("src/testimage.png");
+        WebElement imageLocator = webDriver.findElement(By.cssSelector("input[name = 'new_images[]']"));
+        imageLocator.sendKeys(imageFile.getAbsolutePath());
+
         WebElement dateValidFrom = webDriver.findElement(By.cssSelector("input[name = 'date_valid_from']"));
         dateValidFrom.sendKeys("01.01.2017");
         WebElement dateValidTo = webDriver.findElement(By.cssSelector("input[name = 'date_valid_to']"));
