@@ -10,6 +10,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Random;
+
 /**
  * Created by armendavtan on 22.01.17.
  */
@@ -42,14 +44,20 @@ public class UserRegistrationTest {
         WebElement registrationLink = webDriver.findElement(By.cssSelector("#box-account-login > div > form > table > tbody > tr:nth-child(5) > td > a"));
         registrationLink.click();
 
-        String email = "seleniumtestingemail1230@mailforspam.com";
-
         insertText("Ivan","input[name='firstname']");
         insertText("Ivanov","input[name='lastname']");
         insertText("Address","input[name='address1']");
         insertText("123456","input[name='postcode']");
         insertText("Moscow","input[name='city']");
         fillSelectForm("RU","select[name='country_code']");
+
+        //generate random email
+        String email = "seleniumtestingemail";
+        Random rn = new Random();
+        int randomNum = rn.nextInt();
+        email += String.valueOf(randomNum);
+        email += "@mailforspam.com";
+
         insertText(email,"input[name='email']");
         insertText("+71234567890","input[name='phone']");
         insertText("1234Pass","input[name='password']");
