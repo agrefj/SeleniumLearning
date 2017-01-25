@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,6 +30,19 @@ public class ShippingCartTest {
         wait = new WebDriverWait(driver,10);
     }
 
+    public boolean selectSizeIfNeeded(int index){
+
+        List<WebElement> select= driver.findElements(By.cssSelector("select"));
+        if(select.size() > 0) {
+
+            Select menuItem = new Select(select.get(0));
+            menuItem.selectByValue("Small");
+
+            return true;
+        }
+        return false;
+    }
+
     @Test
     public void ShippingCartTest(){
         driver.get("http://localhost/litecart/en/");
@@ -41,6 +55,7 @@ public class ShippingCartTest {
         for(int i =0; i < 3; i++) {
             firstProduct = driver.findElement(By.cssSelector("div.image-wrapper"));
             firstProduct.click();
+            selectSizeIfNeeded(1);
             addToCartButton = driver.findElement(By.cssSelector("[name='add_cart_product'"));
             addToCartButton.click();
             homeButton = driver.findElement(By.cssSelector(".general-0 a"));
