@@ -13,8 +13,6 @@ import java.util.List;
  */
 public class BaseTest {
 
-    public WebDriver driver;
-    public WebDriverWait wait;
 
     public static boolean areElementsPresent(WebDriver driver, By locator) {
         return driver.findElements(locator).size() > 0;
@@ -27,5 +25,14 @@ public class BaseTest {
         return list.equals(newList);
     }
 
+    public static void openMainPage (WebDriver driver) {
+        driver.get("http://localhost/litecart/en/");
+    }
+
+    public static void authorize(WebDriver driver){
+        driver.findElement(By.name("username")).sendKeys("admin");
+        driver.findElement(By.name("password")).sendKeys("admin");
+        driver.findElement(By.name("login")).click();
+    }
 
 }

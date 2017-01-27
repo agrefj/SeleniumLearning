@@ -19,7 +19,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentI
 /**
  * Created by armendavtan on 24.01.17.
  */
-public class ShippingCartTest {
+public class ShoppingCartTest {
 
     private WebDriver driver;
     private WebDriverWait wait;
